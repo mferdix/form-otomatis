@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Request Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .required-field:after {
+            content: " *";
+            color: #e74c3c;
+        }
+        #cloud_zone {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+        .server-name-example {
+            font-family: monospace;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center mb-0">Server Request Form</h2>
+            </div>
+            <div class="card-body">
+                <form action="/submit" method="post">
+                    
+                    <!-- Applicant Information -->
+                    <div class="form-section">
+                        <h3 class="form-title">Applicant Information</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nama_pemohon" class="form-label required-field">Full Name</label>
+                                <input type="text" class="form-control" id="nama_pemohon" name="nama_pemohon" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nip" class="form-label required-field">Employee ID</label>
+                                <input type="text" class="form-control" id="nip" name="nip" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tanggal_permintaan" class="form-label required-field">Request Date</label>
+                                <input type="date" class="form-control" id="tanggal_permintaan" name="tanggal_permintaan" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label required-field">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bagian" class="form-label required-field">Department</label>
+                                <input type="text" class="form-control" id="bagian" name="bagian" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="group" class="form-label required-field">Group</label>
+                                <input type="text" class="form-control" id="group" name="group" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Server Specifications -->
+                    <div class="form-section">
+                        <h3 class="form-title">Server Specifications</h3>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="platform_type" class="form-label required-field">Platform</label>
+                                <select class="form-select" id="platform_type" name="platform_type" required onchange="updateServerName()">
+                                    <option value="">Select...</option>
+                                    <option value="GCP">Google Cloud (GCP)</option>
+                                    <option value="AWS">Amazon Web Services (AWS)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="zone" class="form-label required-field">Zone</label>
+                                <select class="form-select" id="zone" name="zone" required onchange="updateServerName()">
+                                    <option value="">Select Zone</option>
+                                    <option value="A">Zone A</option>
+                                    <option value="B">Zone B</option>
+                                    <option value="C">Zone C</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="type" class="form-label required-field">Server Type</label>
+                                <select class="form-select" id="type" name="type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Virtual Machine">Virtual Machine</option>
+                                    <option value="Physical Server">Physical Server</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="environment" class="form-label required-field">Environment</label>
+                                <select class="form-select" id="environment" name="environment" required>
+                                    <option value="">Select Environment</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Testing">Testing</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="os_platform" class="form-label">OS Platform</label>
+                                <select class="form-select" id="os_platform" name="os_platform">
+                                    <option value="">Select OS</option>
+                                    <option value="Windows Server">Windows Server</option>
+                                    <option value="Linux">Linux</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="jangka_waktu" class="form-label required-field">Duration</label>
+                                <select class="form-select" id="jangka_waktu" name="jangka_waktu" required>
+                                    <option value="">Select Duration</option>
+                                    <option value="1 Month">1 Month</option>
+                                    <option value="3 Months">3 Months</option>
+                                    <option value="6 Months">6 Months</option>
+                                    <option value="1 Year">1 Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Server Naming -->
+                    <div class="form-section">
+                        <h3 class="form-title">Server Naming</h3>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Platform Zone Prefix</label>
+                                <input type="text" class="form-control" id="cloud_zone" readonly>
+                            </div>
+                            <div class="col-md-8">
+                                <label for="server_name" class="form-label required-field">Server Name</label>
+                                <input type="text" class="form-control" id="server_name" name="server_name" required
+                                       placeholder="Enter server name (without prefix)">
+                            </div>
+                            <div class="col-12">
+                                <div class="alert alert-info py-2">
+                                    <strong>Server Name Format:</strong> 
+                                    <span class="server-name-example" id="server_name_example">[Prefix][YourInput]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource Requirements -->
+                    <div class="form-section">
+                        <h3 class="form-title">Resource Requirements</h3>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="cpus" class="form-label">vCPUs</label>
+                                <input type="number" class="form-control" id="cpus" name="cpus" min="1">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ram" class="form-label">RAM (GB)</label>
+                                <input type="number" class="form-control" id="ram" name="ram" min="1">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="disk" class="form-label">Disk (GB)</label>
+                                <input type="number" class="form-control" id="disk" name="disk" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Information -->
+                    <div class="form-section">
+                        <h3 class="form-title">Project Information</h3>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="project" class="form-label">Project Description</label>
+                                <input type="text" class="form-control" id="project" name="project">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="no_project" class="form-label">Project Number</label>
+                                <input type="text" class="form-control" id="no_project" name="no_project">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function updateServerName() {
+        const platform = document.getElementById('platform_type').value;
+        const zone = document.getElementById('zone').value;
+        const prefixField = document.getElementById('cloud_zone');
+        const exampleSpan = document.getElementById('server_name_example');
+        
+        let prefix = "";
+        if (platform === "GCP" && zone) {
+            prefix = `ZI${zone}`;
+        } else if (platform === "AWS" && zone) {
+            prefix = `UI${zone}`;
+        }
+        
+        prefixField.value = prefix;
+        
+        // Update example
+        const serverName = document.getElementById('server_name').value || 'SERVER';
+        exampleSpan.textContent = `${prefix}${serverName}`;
+    }
+    
+    // Update example when server name changes
+    document.getElementById('server_name').addEventListener('input', function() {
+        const prefix = document.getElementById('cloud_zone').value;
+        const name = this.value || 'SERVER';
+        document.getElementById('server_name_example').textContent = `${prefix}${name}`;
+    });
+    </script>
+</body>
+</html>
