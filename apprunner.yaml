@@ -1,0 +1,14 @@
+version: 1.0
+runtime: python3
+entrypoint: python app.py
+port: 8080
+env:
+  - name: FLASK_ENV
+    value: production
+  - name: PORT
+    value: 8080
+files:
+  - requirement.txt
+  - app.py
+  - data/
+  - templates/
