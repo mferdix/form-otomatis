@@ -116,7 +116,7 @@ def submit():
     
     # Gabungkan Cloud Zone + Server Name
     server_name = request.form.get('server_name')
-    full_server_name = f"{cloud_zone}{server_name}"
+    full_server_name = f"{server_name}"
 
     # Siapkan data untuk Excel
     form_data = {
@@ -131,15 +131,15 @@ def submit():
         'Platform Type': platform,
         'Environment': request.form.get('environment'),
         'Type': request.form.get('type'),
-        'Project/Aplikasi/Perangkat': request.form.get('project'),
-        'No of Project/Aplikasi/Perangkat': request.form.get('no_project'),
+        # 'Project/Aplikasi/Perangkat': request.form.get('project'),
+        # 'No of Project/Aplikasi/Perangkat': request.form.get('no_project'),
         'Number of CPUs': request.form.get('cpus'),
         'RAM (GB)': request.form.get('ram'),
         'Disk (GB)': request.form.get('disk'),
         'Zone': zone,
         'OS Platform': request.form.get('os_platform'),
         'Cloud Zone Prefix': cloud_zone,
-        'Server Name Input': server_name,
+        # 'Server Name Input': server_name,
         'Server Name': full_server_name
     }
 
@@ -183,15 +183,15 @@ def view_data():
             'Platform Type',
             'Environment',
             'Type',
-            'Project/Aplikasi/Perangkat',
-            'No of Project/Aplikasi/Perangkat',
+            # 'Project/Aplikasi/Perangkat',
+            # 'No of Project/Aplikasi/Perangkat',
             'Number of CPUs',
             'RAM (GB)',
             'Disk (GB)',
             'Zone',
             'OS Platform',
             'Cloud Zone Prefix',
-            'Server Name Input',
+            # 'Server Name Input',
             'Server Name'
         ]
         

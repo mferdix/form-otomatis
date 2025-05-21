@@ -114,20 +114,21 @@
                         <div class="col-md-4">
                             <label for="zone" class="form-label required">Zone</label>
                             <select class="form-select" id="zone" name="zone" required onchange="updateCloudZone()">
-                                <option value="">Pilih Zone</option>
-                                <option value="A">Zone A</option>
-                                <option value="B">Zone B</option>
-                                <option value="C">Zone C</option>
+                                <option value="">Select Zone</option>
+                                    <option value="A">Zone A</option>
+                                    <option value="B">Zone B</option>
+                                    <option value="C">Zone C</option>
+                                    <option value="D">ap-southeast-3a</option>
+                                    <option value="E">ap-southeast-3b</option>
+                                    <option value="F">ap-southeast-3c</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="os_platform" class="form-label">OS Platform</label>
                             <select class="form-select" id="os_platform" name="os_platform">
-                                <option value="">Pilih...</option>
-                                <option value="Windows Server">Windows Server</option>
-                                <option value="Linux">Linux</option>
-                                <option value="Unix">Unix</option>
-                                <option value="Lainnya">Lainnya</option>
+                                <option value="">Select OS</option>
+                                    <option value="Windows Server">Windows Server</option>
+                                    <option value="Linux">Linux</option>
                             </select>
                         </div>
                     </div>
@@ -142,14 +143,173 @@
                             <input type="text" class="form-control" id="cloud_zone" name="cloud_zone" readonly>
                         </div>
                         <div class="col-md-6">
-                            <label for="server_name" class="form-label required">Server Name</label>
-                            <input type="text" class="form-control" id="server_name" name="server_name" required
-                                   placeholder="Masukkan nama server (tanpa prefix)">
+                            <label for="env" class="form-label required">Fungsi Environment</label>
+                            <select class="form-select" id="env" name="env">
+                               <option value="">Select Environment</option>
+                                    <option value="P">Production</option>
+                                    <option value="D">Development/PTR</option>
+                                    <option value="Q">Quality Assurance (QA)/UAT</option>
+                                    <option value="T">Testing (Perf. Test)/VIT/SIT</option>
+                                    <option value="S">Staging</option>
+                                    <option value="U">PTS</option>
+                                    <option value="L">Pilot Environment</option>
+                                    <option value="H">Hub Production</option>
+                                    <option value="N">Hub Non Production</option>
+                                    <option value="R">Disaster Recovery</option>
+                                    <option value="B">PACS</option>
+                                    <option value="A">Sandbox Environment</option>
+                                    <option value="C">POC</option>
+ 
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="fungsi" class="form-label required">fungsi</label>
+                            <select class="form-select" id="fungsi" name="fungsi">
+                                <option value="">Pilih Tipe Aplikasi</option>
+                                <option value="CBS">Core Banking</option>
+                                <option value="RTG">Real Time</option>
+                                <option value="CMS">CMS</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="proyek" class="form-label required">Proyek/Aplikasi/Perangkat</label>
+                            <select class="form-select" id="proyek" name="proyek">
+                               <option value="">Select Type</option>
+                                    <option value="Web Server">Web Server</option>
+                                    <option value="Physical Server">Application Server</option>
+                                    <option value="Database Server">Database Server</option>
+                                    <option value="API">API</option>
+                                    <option value="LBS">Load Balancer Server</option>
+                                    <option value="CAS">Cache Server</option>
+                                    <option value="BKP">Backup Server</option>
+                                    <option value="LOG">Logging Server</option>
+                                    <option value="MGT">Management Server</option>
+                                    <option value="ETL">ETL (Extract, Transform, Load) Server</option>
+                                    <option value="FTP">FTP Server</option>
+                                    <option value="NTP">Network Time Protocol Server</option>
+                                    <option value="DNS">Domain Name System Server</option>
+                                    <option value="PRO">Proxy Server</option>
+                                    <option value="VMS">Virtualization Server</option>
+                                    <option value="SAN">Storage Area Network Server/ Switch</option>
+                                    <option value="DCS">Data Center Server</option>
+                                    <option value="CRM">Customer Relationship Management Server</option>
+                                    <option value="SPN">Spine Switch</option>
+                                    <option value="LEF">Leaf Switch</option>
+                                    <option value="RW1">Router WAN (Primary)</option>
+                                    <option value="RW2">Router WAN (Secondary)</option>
+                                    <option value="RIN">Router Internet</option>
+                                    <option value="LBF">Load Balancer (F5)</option>
+                                    <option value="LBA">Load Balancer (Application)</option>
+                                    <option value="WLC">Wireless LAN Controller</option>
+                                    <option value="RIU">Router-INET User</option>
+                                    <option value="RDW">Router-DWDM</option>
+                                    <option value="REX">Router Extranet</option>
+                                    <option value="RCL">Router Cloud</option>
+                                    <option value="SEX">Switch Extranet</option>
+                                    <option value="SEO">Switch Extranet (Old)</option>
+                                    <option value="SIN">Switch Internet (INET)</option>
+                                    <option value="SDT">Switch Distribution</option>
+                                    <option value="SCO">Switch Core (Old)</option>
+                                    <option value="SMG">Switch Management</option>
+                                    <option value="SCP">Switch Converter ke Provider</option>
+                                    <option value="IOC">SD-WAN Cabang</option>
+                                    <option value="FSV">File Server</option>
+                                    <option value="NAS">Network Attached Storage</option>
+                                    <option value="JUN">Juniper Network Devices</option>
+                                    <option value="FOR">Fortinet Network Devices</option>
+                                    <option value="ARI">Arista Network Devices</option>
+                                    <option value="IOD">SD-WAN Data Center</option>
+                                    <option value="ION">Integrated Optical Network</option>
+                                    <option value="SWC">Core Switch</option>
+                                    <option value="SWA">Access Switch</option>
+                                    <option value="SWT">Distribution Switch</option>
+                                    <option value="RTR">Router</option>
+                                    <option value="EDG">Edge Router</option>
+                                    <option value="AGG">Aggregation Router</option>
+                                    <option value="FWL">Firewall</option>
+                                    <option value="IPS">Intrusion Prevention System</option>
+                                    <option value="IDS">Intrusion Detection System</option>
+                                    <option value="VPN">VPN Gateway</option>
+                                    <option value="LBN">Network Load Balancer</option>
+                                    <option value="WAP">Wireless Access Point</option>
+                                    <option value="WSG">Wireless Security Gateway</option>
+                                    <option value="NMS">Network Management Server</option>
+                                    <option value="NOC">Network Operations Center</option>
+                                    <option value="PBX">Private Branch Exchange</option>
+                                    <option value="VOI">VoIP Gateway</option>
+                                    <option value="SIP">SIP Server</option>
+                                    <option value="UPS">Uninterruptible Power Supply</option>
+                                    <option value="PDU">Power Distribution Unit</option>
+                                    <option value="KVM">Keyboard-Video-Mouse Switch</option>
+                                    <option value="SDN">Software-Defined Network Controller</option>
+                                    <option value="MPL">MPLS Router</option>
+                                    <option value="BRD">Border Gateway Protocol Route</option>
+                                    <option value="ADC">Application Delivery Controller</option>
+                                    <option value="CDA">Content Delivery Appliance</option>
+                                    <option value="SYN">Synchronization Server</option>
+                                    <option value="CDA">Content Delivery Appliance</option>
+                                    <option value="SYN">Synchronization Server</option>
+                                    <option value="DHC">Dynamic Host Configuration Protocol Server</option>
+                                    <option value="PRX">Proxy Server</option>
+                                    <option value="ANT">Anti-Malware Server</option>
+                                    <option value="DMZ">DMZ Server</option>
+                                    <option value="SFT">SSH File Transfer Protocol (SFTP)</option>
+                                    <option value="IFG">Internet Firewall Gateway</option>
+                                    <option value="JMP">Jumphost Server</option>
+                                    <option value="LDR">Generator/Loadgenerator</option>
+                                    <option value="PAY">Payment Gateway</option>
+                                    <option value="CIC">CI Connector BI Fast</option>
+                                    <option value="HSP">HSM Payshield 10K</option>
+                                    <option value="HSL">HSM Luna</option>
+                                    <option value="LTM">Load Balancer (Only)</option>
+                                    <option value="DTM">Datamart</option>
+                                    <option value="RED">Redis, Memcached In-Memory Databases</option>
+                                    <option value="STR">Storage Devices</option>
+                                    <option value="OBT">Openshift - Bootstrap</option>
+                                    <option value="OBS">Openshift - Bastion</option>
+                                    <option value="OCP">Openshift - Control Plane/ Master</option>
+                                    <option value="ORT">Openshift - Router</option>
+                                    <option value="OMR">Openshift - Monitoring/Registry</option>
+                                    <option value="OLG">Openshift - Logging</option>
+                                    <option value="OWR">Openshift - Worker</option>
+                                    <option value="OIM">Openshift - Infra Mix</option>
+                                    <option value="OPP">Openshift - Infra OPP (ACM, ACS)</option>
+                                    <option value="HSM">HSM</option>
+                                    <option value="TWS">TWS Server</option>
+                                    <option value="CRE">ESB Core Server</option>
+                                    <option value="UBP">Unified Bill Payment (UBP)</option>
+                                    <option value="ISO">ISO Server</option>
+                                    <option value="NFS">NFS Server</option>
+                                    <option value="ELK">Elastic Stack (ELK) - Log</option>
+                                    <option value="RED">Redis, Memcached In-Memory Databases</option>
+                                    <option value="JNK">Jenkins</option>
+                                    <option value="NEX">Nexus</option>
+                                    <option value="TCS">TC Server</option>
+                                    <option value="MTA">SMTP Server</option>
+                                    <option value="SPA">SuperApp</option>
+                                    <option value="INE">BSInet</option>
+                                    <option value="XCC">EXACC</option>
+                                    <option value="GRF">Grafana</option>
+                                    <option value="CID">CI/CD</option>
+                                    <option value="OBJ">OBJ</option>
+                                    <option value="KFK">Kafka - Message Broker</option>
+                                    <option value="SAD">Storage Area Network Server/ Director</option>
+                                    <option value="BAS">BASTION</option>
+                                    <option value="ELS">Elastic</option>
+                                    <option value="KBN">Kibana</option>
+                                    <option value="DYN">Dynatrace</option>
+                                    <option value="ASP">Server Tim ASP</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="number" class="form-label">Number VM</label>
+                            <input type="number" class="form-control" id="number" name="number" min="1">
                         </div>
                         <div class="col-12">
                             <div class="alert alert-info py-2">
                                 <strong>Format Nama Server:</strong> 
-                                <span class="server-name-preview" id="server_name_example">[Cloud Zone][Server Name]</span>
+                                <span class="server-name-preview" id="server_name_example">[Cloud Zone][ENV][Fungsi][Proyek][Number]</span>
+                                <input type="hidden" value="" id="server_name" name="server_name">
                             </div>
                         </div>
                     </div>
@@ -175,7 +335,7 @@
                 </div>
 
                 <!-- Section 5: Informasi Project -->
-                <div class="form-section">
+                <!-- <div class="form-section">
                     <h3 class="section-title">Informasi Project</h3>
                     <div class="row g-3">
                         <div class="col-12">
@@ -187,7 +347,7 @@
                             <input type="text" class="form-control" id="no_project" name="no_project">
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Submit Button -->
                 <div class="form-group mt-4">
@@ -208,6 +368,11 @@
         const zone = document.getElementById('zone').value;
         const cloudZoneField = document.getElementById('cloud_zone');
         const exampleSpan = document.getElementById('server_name_example');
+        const env = document.getElementById('env').value;
+        const fungsi = document.getElementById('fungsi').value;
+        const proyek = document.getElementById('proyek').value;
+        const number = document.getElementById('number').value || '';
+
         
         let prefix = "";
         if (platform === "GCP" && zone) {
@@ -224,14 +389,22 @@
         
         // Update contoh nama server
         const serverName = document.getElementById('server_name').value || 'SERVER';
-        exampleSpan.textContent = `${prefix}${serverName}`;
+        exampleSpan.textContent = `${prefix}${env}${fungsi}${proyek}${number}`;
     }
     
     // Update contoh saat server name diubah
-    document.getElementById('server_name').addEventListener('input', function() {
+    document.getElementById('number').addEventListener('input', function() {
         const prefix = document.getElementById('cloud_zone').value;
-        const name = this.value || 'SERVER';
-        document.getElementById('server_name_example').textContent = `${prefix}${name}`;
+        const platform = document.getElementById('platform_type').value;
+        const zone = document.getElementById('zone').value;
+        const cloudZoneField = document.getElementById('cloud_zone');
+        const exampleSpan = document.getElementById('server_name_example');
+        const env = document.getElementById('env').value;
+        const fungsi = document.getElementById('fungsi').value;
+        const proyek = document.getElementById('proyek').value;
+        const number = document.getElementById('number').value || '';
+        document.getElementById('server_name_example').textContent = `${prefix}${env}${fungsi}${proyek}${number}`;
+        document.getElementById('server_name').value = `${prefix}${env}${fungsi}${proyek}${number}`;
     });
     </script>
 </body>
